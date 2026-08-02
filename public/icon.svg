@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-labelledby="title desc">
+  <title id="title">OK, Squirrel! app icon</title>
+  <desc id="desc">A calm capybara face inside a rounded plum square with a small coral acorn.</desc>
+  <rect width="512" height="512" rx="112" fill="#563447"/>
+  <circle cx="164" cy="175" r="48" fill="#c98273"/>
+  <circle cx="348" cy="175" r="48" fill="#c98273"/>
+  <ellipse cx="256" cy="286" rx="164" ry="150" fill="#d6b99a"/>
+  <circle cx="202" cy="264" r="15" fill="#34262f"/>
+  <circle cx="310" cy="264" r="15" fill="#34262f"/>
+  <ellipse cx="256" cy="322" rx="44" ry="34" fill="#7a5548"/>
+  <path d="M220 365c24 18 48 18 72 0" fill="none" stroke="#34262f" stroke-width="14" stroke-linecap="round"/>
+  <path d="M396 376c38 0 62 24 62 54s-24 54-62 54-62-24-62-54 24-54 62-54Z" fill="#e1846f"/>
+  <path d="M365 382c20-28 42-38 66-30" fill="none" stroke="#f0c47d" stroke-width="18" stroke-linecap="round"/>
+</svg>
