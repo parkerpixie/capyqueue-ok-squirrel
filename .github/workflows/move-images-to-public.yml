@@ -1,5 +1,6 @@
 name: Move uploaded images to public
 
+# One-time repository cleanup workflow.
 on:
   push:
     branches:
