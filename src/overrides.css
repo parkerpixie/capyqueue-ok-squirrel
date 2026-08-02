@@ -1,0 +1,15 @@
+.animal-card img {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: none;
+  object-fit: contain;
+}
+
+.reminder-card .daily-card-label {
+  position: static;
+}
+
+.reminder-squirrel {
+  margin-top: auto;
+}
