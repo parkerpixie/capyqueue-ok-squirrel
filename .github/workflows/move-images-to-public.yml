@@ -1,0 +1,46 @@
+name: Move uploaded images to public
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/move-images-to-public.yml
+
+permissions:
+  contents: write
+
+jobs:
+  move-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Move root-level images into public
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p public
+
+          moved=0
+          while IFS= read -r -d '' file; do
+            git mv "$file" public/
+            moved=1
+          done < <(find . -maxdepth 1 -type f \( \
+            -iname '*.png' -o \
+            -iname '*.jpg' -o \
+            -iname '*.jpeg' -o \
+            -iname '*.webp' \
+          \) -print0)
+
+          if [ "$moved" -eq 0 ]; then
+            echo "No root-level images needed moving."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Move uploaded images into public folder"
+          git push
