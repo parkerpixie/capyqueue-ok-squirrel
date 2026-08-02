@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">OK, Squirrel! social preview</title>
+  <desc id="desc">A warm plum and beige card reading OK, Squirrel! Help for the moment you're having. A CapyQueue app. Systems for Humans.</desc>
+  <rect width="1200" height="630" fill="#f4eadf"/>
+  <circle cx="1040" cy="110" r="240" fill="#d7ece8"/>
+  <circle cx="105" cy="580" r="260" fill="#f2c7bd"/>
+  <rect x="92" y="78" width="1016" height="474" rx="48" fill="#fffaf5" stroke="#563447" stroke-width="8"/>
+  <g transform="translate(120 140)">
+    <rect width="190" height="190" rx="48" fill="#563447"/>
+    <circle cx="62" cy="65" r="19" fill="#c98273"/>
+    <circle cx="128" cy="65" r="19" fill="#c98273"/>
+    <ellipse cx="95" cy="108" rx="62" ry="58" fill="#d6b99a"/>
+    <circle cx="74" cy="101" r="6" fill="#34262f"/>
+    <circle cx="116" cy="101" r="6" fill="#34262f"/>
+    <ellipse cx="95" cy="125" rx="17" ry="13" fill="#7a5548"/>
+  </g>
+  <text x="350" y="220" fill="#563447" font-family="Arial, Helvetica, sans-serif" font-size="80" font-weight="800">OK, Squirrel!</text>
+  <text x="352" y="292" fill="#3f3439" font-family="Arial, Helvetica, sans-serif" font-size="38">Help for the moment you’re having.</text>
+  <text x="352" y="405" fill="#2f7470" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="700">A CapyQueue app</text>
+  <text x="352" y="454" fill="#735b67" font-family="Arial, Helvetica, sans-serif" font-size="28">Systems for Humans</text>
+</svg>
