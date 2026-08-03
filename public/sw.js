@@ -1,5 +1,14 @@
-const CACHE_NAME = 'ok-squirrel-v1';
-const APP_SHELL = ['/', '/manifest.webmanifest', '/icon.svg', '/social-preview.svg'];
+const CACHE_NAME = 'ok-squirl-v2';
+const APP_SHELL = [
+  '/',
+  '/manifest.webmanifest',
+  '/public/assets/ok-squirl/ok-squirl-favicon-192.png',
+  '/public/assets/ok-squirl/ok-squirl-favicon-512.png',
+  '/public/assets/ok-squirl/ok-squirl-mark-icon-only.png',
+  '/public/assets/ok-squirl/ok-squirl-icon-breathe.svg',
+  '/public/assets/ok-squirl/ok-squirl-icon-home.svg',
+  '/public/assets/ok-squirl/ok-squirl-icon-journal.svg'
+];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)));
@@ -38,7 +47,6 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(request).then((cached) => {
       if (cached) return cached;
-
       return fetch(request).then((response) => {
         if (!response || response.status !== 200 || response.type !== 'basic') return response;
         const copy = response.clone();
