@@ -1,18 +1,18 @@
-const CACHE_NAME = 'ok-squirl-v3';
+const CACHE_NAME = 'ok-squirl-v4';
 const APP_SHELL = [
   '/',
   '/manifest.webmanifest',
-  '/public/assets/ok-squirl/ok-squirl-favicon-192.png',
-  '/public/assets/ok-squirl/ok-squirl-favicon-512.png',
-  '/public/assets/ok-squirl/ok-squirl-mark-icon-only.png',
-  '/public/assets/ok-squirl/ok-squirl-icon-breathe.svg',
-  '/public/assets/ok-squirl/ok-squirl-icon-home.svg',
-  '/public/assets/ok-squirl/ok-squirl-icon-journal.svg',
-  '/public/assets/ok-squirl/01-blondie-wave.png',
-  '/public/assets/ok-squirl/02-blondie-meditate.png',
-  '/public/assets/ok-squirl/03-blondie-thoughtful.png',
-  '/public/assets/ok-squirl/04-blondie-avatar.png',
-  '/public/assets/ok-squirl/06-ok-squirl-light-background.png'
+  '/assets/ok-squirl/ok-squirl-favicon-192.png',
+  '/assets/ok-squirl/ok-squirl-favicon-512.png',
+  '/assets/ok-squirl/ok-squirl-mark-icon-only.png',
+  '/assets/ok-squirl/ok-squirl-icon-breathe.svg',
+  '/assets/ok-squirl/ok-squirl-icon-home.svg',
+  '/assets/ok-squirl/ok-squirl-icon-journal.svg',
+  '/assets/ok-squirl/01-blondie-wave.png',
+  '/assets/ok-squirl/02-blondie-meditate.png',
+  '/assets/ok-squirl/03-blondie-thoughtful.png',
+  '/assets/ok-squirl/04-blondie-avatar.png',
+  '/assets/ok-squirl/06-ok-squirl-light-background.png'
 ];
 
 self.addEventListener('install', (event) => {
