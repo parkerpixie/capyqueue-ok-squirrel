@@ -31,27 +31,29 @@ function replaceText(root = document.body) {
   });
 
   document.querySelectorAll('[aria-label]').forEach((element) => {
-    let label = element.getAttribute('aria-label') || '';
+    const currentLabel = element.getAttribute('aria-label') || '';
+    let nextLabel = currentLabel;
     replacements.forEach((next, current) => {
-      label = label.replaceAll(current, next);
+      nextLabel = nextLabel.replaceAll(current, next);
     });
-    element.setAttribute('aria-label', label);
+    if (nextLabel !== currentLabel) element.setAttribute('aria-label', nextLabel);
   });
 }
 
 function decorateHeader() {
   const icon = document.querySelector('.brand-icon');
+  const iconSource = asset('ok-squirl-mark-icon-only.png');
   if (icon) {
-    icon.src = asset('ok-squirl-mark-icon-only.png');
-    icon.alt = '';
+    if (!icon.src.endsWith(iconSource)) icon.src = iconSource;
+    if (icon.alt) icon.alt = '';
   }
 
   const brand = document.querySelector('.brand-button');
   if (brand) {
     const strong = brand.querySelector('strong');
     const small = brand.querySelector('small');
-    if (strong) strong.textContent = 'OK Squirl';
-    if (small) small.textContent = 'A CapyQueue Company';
+    if (strong && strong.textContent !== 'OK Squirl') strong.textContent = 'OK Squirl';
+    if (small && small.textContent !== 'A CapyQueue Company') small.textContent = 'A CapyQueue Company';
   }
 }
 
