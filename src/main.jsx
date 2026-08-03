@@ -5,6 +5,8 @@ import './styles.css';
 import './overrides.css';
 import './brand-refresh.css';
 import './brand-enhancements.js';
+import './blondie.css';
+import './blondie-enhancements.js';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
