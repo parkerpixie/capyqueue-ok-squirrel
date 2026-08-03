@@ -1,4 +1,4 @@
-const CACHE_NAME = 'ok-squirl-v2';
+const CACHE_NAME = 'ok-squirl-v3';
 const APP_SHELL = [
   '/',
   '/manifest.webmanifest',
@@ -7,7 +7,12 @@ const APP_SHELL = [
   '/public/assets/ok-squirl/ok-squirl-mark-icon-only.png',
   '/public/assets/ok-squirl/ok-squirl-icon-breathe.svg',
   '/public/assets/ok-squirl/ok-squirl-icon-home.svg',
-  '/public/assets/ok-squirl/ok-squirl-icon-journal.svg'
+  '/public/assets/ok-squirl/ok-squirl-icon-journal.svg',
+  '/public/assets/ok-squirl/01-blondie-wave.png',
+  '/public/assets/ok-squirl/02-blondie-meditate.png',
+  '/public/assets/ok-squirl/03-blondie-thoughtful.png',
+  '/public/assets/ok-squirl/04-blondie-avatar.png',
+  '/public/assets/ok-squirl/06-ok-squirl-light-background.png'
 ];
 
 self.addEventListener('install', (event) => {
