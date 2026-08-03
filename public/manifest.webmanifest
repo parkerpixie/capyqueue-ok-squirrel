@@ -1,20 +1,32 @@
 {
-  "name": "OK, Squirrel! by CapyQueue",
-  "short_name": "OK, Squirrel!",
-  "description": "Daily grounding and emotional rescue tools for overwhelming moments.",
+  "name": "OK Squirl · A CapyQueue Company",
+  "short_name": "OK Squirl",
+  "description": "A calm corner for squirrelly moments, with daily guidance, breathing support, and simple next steps.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "orientation": "portrait-primary",
-  "background_color": "#f8f1e9",
-  "theme_color": "#563447",
+  "background_color": "#F6F2EB",
+  "theme_color": "#6E8E86",
   "categories": ["health", "lifestyle", "productivity"],
   "icons": [
     {
-      "src": "/icon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any maskable"
+      "src": "/public/assets/ok-squirl/ok-squirl-favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/public/assets/ok-squirl/ok-squirl-favicon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/public/assets/ok-squirl/ok-squirl-adaptive-icon-foreground.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ]
 }
