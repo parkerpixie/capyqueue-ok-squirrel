@@ -1,0 +1,34 @@
+body::before {
+  background:
+    linear-gradient(rgba(250, 248, 243, 0.82), rgba(246, 242, 235, 0.88)),
+    url('/assets/ok-squirl/06-ok-squirl-light-background.png') center top / cover fixed;
+  opacity: 1;
+}
+
+.welcome-section,
+.guide-intro,
+.rescue-header {
+  background:
+    linear-gradient(120deg, rgba(255, 255, 255, 0.94), rgba(233, 236, 231, 0.84)),
+    url('/assets/ok-squirl/ok-squirl-swoosh.svg') right bottom / 70% auto no-repeat;
+}
+
+.welcome-section::after {
+  background-image: url('/assets/ok-squirl/ok-squirl-mark-icon-only.png');
+}
+
+.rescue-callout::after {
+  background-image: url('/assets/ok-squirl/ok-squirl-mark-icon-only.png');
+}
+
+.blondie-intro {
+  background:
+    linear-gradient(120deg, rgba(255, 253, 249, 0.96), rgba(233, 236, 231, 0.84)),
+    url('/assets/ok-squirl/06-ok-squirl-light-background.png') center / cover;
+}
+
+.breathing-home {
+  background:
+    linear-gradient(145deg, rgba(255, 253, 249, 0.94), rgba(233, 236, 231, 0.88)),
+    url('/assets/ok-squirl/06-ok-squirl-light-background.png') center / cover;
+}
