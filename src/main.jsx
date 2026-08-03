@@ -1,11 +1,13 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
 import App from './App.jsx';
+import './asset-path-fix.js';
 import './styles.css';
 import './overrides.css';
 import './brand-refresh.css';
-import './brand-enhancements.js';
 import './blondie.css';
+import './asset-path-fix.css';
+import './brand-enhancements.js';
 import './blondie-enhancements.js';
 
 createRoot(document.getElementById('root')).render(
