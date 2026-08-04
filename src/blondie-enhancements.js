@@ -56,7 +56,7 @@ function upgradeBreathingSection() {
   const description = section.querySelector('.breathing-copy p:not(.eyebrow)');
   if (heading) heading.textContent = 'Breathe with Blondie.';
   if (description) {
-    description.textContent = 'Follow Blondie through three gentle breaths. You will count in for four, hold for two, and breathe out for six.';
+    description.textContent = 'Follow Blondie through three gentle breaths. Count in for four, hold for four, and breathe out for six.';
   }
 
   const originalStart = section.querySelector('.breathing-start');
@@ -80,16 +80,30 @@ function upgradeBreathingSection() {
 
   orbWrap.innerHTML = `
     <button class="blondie-breathe-button" type="button" aria-label="Start breathing with Blondie">
-      <img src="${blondieAsset('02-blondie-meditate.png')}" alt="Blondie sitting calmly with her eyes closed">
+      <img src="${blondieAsset('02-blondie-meditate.png')}" alt="Blondie getting ready to breathe">
       <span class="breathing-number" aria-hidden="true">Tap</span>
     </button>
   `;
 
   const mascotButton = orbWrap.querySelector('.blondie-breathe-button');
+  const mascotImage = mascotButton?.querySelector('img');
   const numberLabel = orbWrap.querySelector('.breathing-number');
+  const readyImage = blondieAsset('02-blondie-meditate.png');
+  const completeImage = blondieAsset('01-blondie-wave.png');
 
   let timers = [];
   let running = false;
+
+  const setMascot = (completed = false) => {
+    if (!mascotImage) return;
+    mascotImage.classList.remove('is-changing');
+    void mascotImage.offsetWidth;
+    mascotImage.src = completed ? completeImage : readyImage;
+    mascotImage.alt = completed
+      ? 'Blondie looking brighter and calm after breathing'
+      : 'Blondie getting ready to breathe';
+    mascotImage.classList.add('is-changing');
+  };
 
   const schedule = (callback, delay) => {
     timers.push(window.setTimeout(callback, delay));
@@ -101,7 +115,7 @@ function upgradeBreathingSection() {
   };
 
   const clearPhaseClasses = () => {
-    stage.classList.remove('is-breathing', 'phase-inhale', 'phase-hold', 'phase-exhale');
+    stage.classList.remove('is-breathing', 'phase-inhale', 'phase-hold', 'phase-exhale', 'is-complete');
   };
 
   const updateControls = () => {
@@ -117,6 +131,8 @@ function upgradeBreathingSection() {
     clearTimers();
     running = false;
     clearPhaseClasses();
+    if (completed) stage.classList.add('is-complete');
+    setMascot(completed);
     phaseLabel.textContent = message;
     numberLabel.textContent = completed ? '✓' : 'Tap';
     countLabel.textContent = completed
@@ -151,7 +167,7 @@ function upgradeBreathingSection() {
 
   const runCycle = (cycle) => {
     runPhase('inhale', 'Breathe in', 4, cycle, () => {
-      runPhase('hold', 'Hold gently', 2, cycle, () => {
+      runPhase('hold', 'Hold gently', 4, cycle, () => {
         runPhase('exhale', 'Breathe out', 6, cycle, () => {
           if (cycle < 3) runCycle(cycle + 1);
           else stop('You made a little more room', true);
@@ -163,6 +179,8 @@ function upgradeBreathingSection() {
   const start = () => {
     if (running) return;
     clearTimers();
+    clearPhaseClasses();
+    setMascot(false);
     running = true;
     updateControls();
     runCycle(1);
