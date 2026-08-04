@@ -1,4 +1,4 @@
-const BLONDIE_ASSET_ROOT = '/public/assets/ok-squirl';
+const BLONDIE_ASSET_ROOT = 'https://raw.githubusercontent.com/parkerpixie/capyqueue-ok-squirrel/main/public/assets/ok-squirl';
 
 const blondieAsset = (name) => `${BLONDIE_ASSET_ROOT}/${name}`;
 
@@ -33,7 +33,7 @@ function mountBlondieIntro() {
       </div>
     </div>
     <button class="blondie-intro-art" type="button" aria-label="Start the breathing exercise with Blondie">
-      <img src="${blondieAsset('01-blondie-wave.png')}" alt="Blondie, the friendly blonde squirrel guide, waving hello">
+      <img src="${blondieAsset('01-blondie-wave.png')}" alt="Blondie, the friendly blonde squirrel guide, waving hello" referrerpolicy="no-referrer">
       <span>Tap Blondie to breathe</span>
     </button>
   `;
@@ -80,7 +80,7 @@ function upgradeBreathingSection() {
 
   orbWrap.innerHTML = `
     <button class="blondie-breathe-button" type="button" aria-label="Start breathing with Blondie">
-      <img src="${blondieAsset('02-blondie-meditate.png')}" alt="Blondie sitting calmly with her eyes closed">
+      <img src="${blondieAsset('02-blondie-meditate.png')}" alt="Blondie sitting calmly with her eyes closed" referrerpolicy="no-referrer">
       <span class="breathing-number" aria-hidden="true">Tap</span>
     </button>
   `;
@@ -187,6 +187,7 @@ function placeBlondieElsewhere() {
   if (reminderImage && reminderImage.dataset.blondiePortrait !== 'true') {
     reminderImage.src = blondieAsset('04-blondie-avatar.png');
     reminderImage.alt = 'Blondie the squirrel';
+    reminderImage.referrerPolicy = 'no-referrer';
     reminderImage.dataset.blondiePortrait = 'true';
   }
 
@@ -196,6 +197,7 @@ function placeBlondieElsewhere() {
     image.className = 'blondie-guide-art';
     image.src = blondieAsset('03-blondie-thoughtful.png');
     image.alt = 'Blondie listening thoughtfully';
+    image.referrerPolicy = 'no-referrer';
     guideIntro.appendChild(image);
   }
 }
