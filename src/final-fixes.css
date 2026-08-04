@@ -1,0 +1,61 @@
+body::before {
+  background:
+    linear-gradient(rgba(250, 248, 243, 0.82), rgba(246, 242, 235, 0.88)),
+    url('/assets/ok-squirl/06-ok-squirl-light-background.png?v=20260803-3') center top / cover fixed;
+}
+
+.blondie-intro {
+  background:
+    linear-gradient(120deg, rgba(255, 253, 249, 0.96), rgba(233, 236, 231, 0.84)),
+    url('/assets/ok-squirl/06-ok-squirl-light-background.png?v=20260803-3') center / cover;
+}
+
+.breathing-home {
+  background:
+    linear-gradient(145deg, rgba(255, 253, 249, 0.94), rgba(233, 236, 231, 0.88)),
+    url('/assets/ok-squirl/06-ok-squirl-light-background.png?v=20260803-3') center / cover;
+}
+
+.reminder-squirrel {
+  overflow: hidden;
+}
+
+.reminder-squirrel img,
+.blondie-intro-art img,
+.blondie-breathe-button img,
+.blondie-guide-art {
+  font-size: 0;
+}
+
+.bottom-nav .nav-rescue:not(.active) {
+  border-color: rgba(56, 68, 66, 0.12);
+  background: rgba(255, 253, 249, 0.82);
+  color: var(--muted);
+  box-shadow: none;
+}
+
+.bottom-nav .nav-rescue:not(.active) span img {
+  filter: none;
+  opacity: 0.72;
+}
+
+.bottom-nav button.active,
+.bottom-nav .nav-rescue.active {
+  background: var(--eucalyptus);
+  color: white;
+  box-shadow: 0 10px 24px rgba(110, 142, 134, 0.28);
+}
+
+.bottom-nav button.active span img,
+.bottom-nav .nav-rescue.active span img {
+  filter: brightness(0) invert(1);
+  opacity: 1;
+}
+
+@media (min-width: 900px) {
+  .bottom-nav button.active,
+  .bottom-nav .nav-rescue.active {
+    background: var(--eucalyptus);
+    color: white;
+  }
+}

@@ -1,19 +1,5 @@
-const CACHE_NAME = 'ok-squirl-v4';
-const APP_SHELL = [
-  '/',
-  '/manifest.webmanifest',
-  '/assets/ok-squirl/ok-squirl-favicon-192.png',
-  '/assets/ok-squirl/ok-squirl-favicon-512.png',
-  '/assets/ok-squirl/ok-squirl-mark-icon-only.png',
-  '/assets/ok-squirl/ok-squirl-icon-breathe.svg',
-  '/assets/ok-squirl/ok-squirl-icon-home.svg',
-  '/assets/ok-squirl/ok-squirl-icon-journal.svg',
-  '/assets/ok-squirl/01-blondie-wave.png',
-  '/assets/ok-squirl/02-blondie-meditate.png',
-  '/assets/ok-squirl/03-blondie-thoughtful.png',
-  '/assets/ok-squirl/04-blondie-avatar.png',
-  '/assets/ok-squirl/06-ok-squirl-light-background.png'
-];
+const CACHE_NAME = 'ok-squirl-v6';
+const APP_SHELL = ['/', '/manifest.webmanifest'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE_NAME).then((cache) => cache.addAll(APP_SHELL)));
@@ -50,14 +36,14 @@ self.addEventListener('fetch', (event) => {
   }
 
   event.respondWith(
-    caches.match(request).then((cached) => {
-      if (cached) return cached;
-      return fetch(request).then((response) => {
-        if (!response || response.status !== 200 || response.type !== 'basic') return response;
-        const copy = response.clone();
-        caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+    fetch(request)
+      .then((response) => {
+        if (response && response.status === 200 && response.type === 'basic') {
+          const copy = response.clone();
+          caches.open(CACHE_NAME).then((cache) => cache.put(request, copy));
+        }
         return response;
-      });
-    })
+      })
+      .catch(() => caches.match(request))
   );
 });
