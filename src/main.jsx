@@ -6,9 +6,11 @@ import './overrides.css';
 import './brand-refresh.css';
 import './blondie.css';
 import './final-fixes.css';
+import './dbt-lab.css';
 import './brand-enhancements.js';
 import './blondie-enhancements.js';
 import './asset-path-fixes.js';
+import './dbt-lab.js';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
