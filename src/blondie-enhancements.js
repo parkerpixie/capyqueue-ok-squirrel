@@ -1,4 +1,4 @@
-const BLONDIE_ASSET_ROOT = '/public/assets/ok-squirl';
+const BLONDIE_ASSET_ROOT = '/assets/ok-squirl';
 
 const blondieAsset = (name) => `${BLONDIE_ASSET_ROOT}/${name}`;
 
