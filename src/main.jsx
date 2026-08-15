@@ -8,12 +8,13 @@ import './blondie.css';
 import './final-fixes.css';
 import './dbt-lab.css';
 import './dbt-engine.css';
-import './feelings-wheel.css';
+import './feelings-wheel-v2.css';
+import './nav-v2.css';
 import './brand-enhancements.js';
 import './blondie-enhancements.js';
 import './asset-path-fixes.js';
 import './dbt-lab.js';
-import './feelings-wheel.js';
+import './feelings-wheel-v2.js';
 import './dbt-engine.js';
 
 createRoot(document.getElementById('root')).render(
