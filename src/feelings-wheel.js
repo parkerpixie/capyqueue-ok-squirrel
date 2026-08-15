@@ -87,7 +87,7 @@ function renderDrilldown() {
   const precise = wheelState.branch ? family.branches[wheelState.branch] : [];
   return `<div class="wheel-selection-head"><button type="button" class="wheel-back" data-wheel-reset>← Start over</button><div><span>${family.icon}</span><strong>${wheelState.family}</strong></div></div>
     <div class="wheel-stage"><p class="eyebrow">MIDDLE RING</p><h3>What kind of ${wheelState.family.toLowerCase()}?</h3><div class="wheel-branches">${branchButtons}</div></div>
-    ${wheelState.branch ? `<div class="wheel-stage wheel-stage-precise"><p class="eyebrow">OUTER RING</p><h3>Which word gets closest?</h3><div class="wheel-precise">${precise.map((word) => `<button class="dbt-emotion-chip wheel-precise-chip" data-family="${wheelState.family}" data-wheel-precise="${word}" type="button">${word}</button>`).join('')}</div><p class="wheel-note">There is no prize for perfect labeling. The useful part is choosing a word precise enough to notice the action urge attached to it.</p></div>` : ''}`;
+    ${wheelState.branch ? `<div class="wheel-stage wheel-stage-precise"><p class="eyebrow">OUTER RING</p><h3>Which word gets closest?</h3><details class="wheel-family-context" open><summary hidden><strong>${wheelState.family}</strong></summary><div class="wheel-precise">${precise.map((word) => `<button class="dbt-emotion-chip wheel-precise-chip" data-family="${wheelState.family}" data-wheel-precise="${word}" type="button">${word}</button>`).join('')}</div></details><p class="wheel-note">There is no prize for perfect labeling. The useful part is choosing a word precise enough to notice the action urge attached to it.</p></div>` : ''}`;
 }
 
 function bindWheel() {
