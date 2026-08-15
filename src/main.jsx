@@ -7,10 +7,12 @@ import './brand-refresh.css';
 import './blondie.css';
 import './final-fixes.css';
 import './dbt-lab.css';
+import './dbt-engine.css';
 import './brand-enhancements.js';
 import './blondie-enhancements.js';
 import './asset-path-fixes.js';
 import './dbt-lab.js';
+import './dbt-engine.js';
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
