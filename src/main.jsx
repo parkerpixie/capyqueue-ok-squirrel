@@ -15,6 +15,7 @@ import './blondie-enhancements.js';
 import './asset-path-fixes.js';
 import './dbt-lab.js';
 import './feelings-wheel-v2.js';
+import './feelings-runtime-fixes.js';
 import './dbt-engine.js';
 
 createRoot(document.getElementById('root')).render(
