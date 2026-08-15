@@ -1,0 +1,902 @@
+.feelings-page {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 7rem;
+}
+
+.feelings-page[hidden],
+[data-v3-panel][hidden] {
+  display: none !important;
+}
+
+.feelings-v3-hero {
+  display: grid;
+  gap: 1.2rem;
+  align-items: end;
+  margin: .45rem 0 1rem;
+  padding: clamp(1.5rem, 5vw, 2.7rem);
+  border: 1px solid rgba(110, 142, 134, .15);
+  border-radius: 30px;
+  background:
+    radial-gradient(circle at 92% 15%, rgba(180, 154, 174, .20), transparent 16rem),
+    linear-gradient(135deg, rgba(255, 253, 249, .96), rgba(233, 236, 231, .90));
+  box-shadow: var(--shadow-sm);
+}
+
+.feelings-v3-hero h1 {
+  max-width: 760px;
+  margin: .2rem 0 .6rem;
+  font-size: clamp(2.3rem, 6vw, 4.25rem);
+  line-height: 1;
+}
+
+.feelings-v3-hero > div:first-child > p:last-child {
+  max-width: 760px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.65;
+}
+
+.feelings-v3-switch {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .35rem;
+  width: min(100%, 390px);
+  padding: .35rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, .72);
+}
+
+.feelings-v3-switch button {
+  min-height: 44px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--muted);
+  font: inherit;
+  font-weight: 800;
+}
+
+.feelings-v3-switch button.active {
+  background: var(--eucalyptus);
+  color: #fff;
+  box-shadow: 0 7px 18px rgba(110, 142, 134, .22);
+}
+
+.feelings-v3-shell {
+  margin-top: 1rem;
+  padding: clamp(1.1rem, 4vw, 1.75rem);
+  border: 1px solid var(--line);
+  border-radius: 30px;
+  background: rgba(255, 253, 249, .94);
+  box-shadow: var(--shadow-sm);
+}
+
+.feelings-v3-copy {
+  max-width: 780px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.feelings-v3-copy h2 {
+  margin: .25rem 0 .55rem;
+}
+
+.feelings-v3-copy > p:last-child {
+  margin: 0 auto;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.feelings-v3-wheel {
+  position: relative;
+  width: min(100%, 620px);
+  aspect-ratio: 1;
+  margin: 1.8rem auto .8rem;
+  overflow: visible;
+  border: 1px solid rgba(110, 142, 134, .18);
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .72);
+  box-shadow:
+    inset 0 0 0 11px rgba(255, 255, 255, .55),
+    0 24px 52px rgba(56, 68, 66, .09);
+  touch-action: none;
+  user-select: none;
+  cursor: grab;
+}
+
+.feelings-v3-wheel.is-dragging {
+  cursor: grabbing;
+}
+
+.feelings-v3-disc {
+  position: absolute;
+  inset: 4.25%;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at center, rgba(255, 253, 249, .98) 0 27%, transparent 27.5%),
+    conic-gradient(
+      from -15deg,
+      rgba(224, 145, 122, .34) 0deg 30deg,
+      rgba(220, 176, 118, .30) 30deg 60deg,
+      rgba(190, 162, 190, .30) 60deg 90deg,
+      rgba(130, 166, 189, .30) 90deg 120deg,
+      rgba(143, 169, 193, .30) 120deg 150deg,
+      rgba(204, 151, 160, .31) 150deg 180deg,
+      rgba(164, 154, 186, .31) 180deg 210deg,
+      rgba(180, 154, 174, .34) 210deg 240deg,
+      rgba(176, 184, 181, .34) 240deg 270deg,
+      rgba(205, 191, 179, .40) 270deg 300deg,
+      rgba(168, 183, 161, .39) 300deg 330deg,
+      rgba(219, 199, 133, .36) 330deg 360deg
+    );
+  box-shadow:
+    inset 0 0 0 1px rgba(56, 68, 66, .07),
+    inset 0 0 44px rgba(255, 255, 255, .72);
+  will-change: transform;
+  pointer-events: none;
+}
+
+.feelings-v3-disc::after {
+  position: absolute;
+  inset: 15%;
+  border: 1px solid rgba(56, 68, 66, .08);
+  border-radius: 50%;
+  content: '';
+}
+
+.feelings-v3-pointer {
+  position: absolute;
+  z-index: 9;
+  top: -6px;
+  left: 50%;
+  width: 44px;
+  height: 44px;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.feelings-v3-pointer span {
+  display: block;
+  width: 0;
+  height: 0;
+  margin: 0 auto;
+  border-right: 13px solid transparent;
+  border-left: 13px solid transparent;
+  border-top: 23px solid var(--soft-plum);
+  filter: drop-shadow(0 4px 5px rgba(56, 68, 66, .15));
+}
+
+.feelings-v3-ring {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+}
+
+.feelings-v3-family {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  gap: .08rem;
+  place-items: center;
+  width: clamp(72px, 15%, 92px);
+  min-height: 52px;
+  padding: .34rem .36rem;
+  border: 1px solid rgba(56, 68, 66, .11);
+  border-radius: 18px;
+  background: rgba(255, 253, 249, .88);
+  color: var(--deep-slate);
+  box-shadow: 0 7px 18px rgba(56, 68, 66, .06);
+  font: inherit;
+  text-align: center;
+  will-change: transform;
+  transition: border-color 140ms ease, background-color 140ms ease, box-shadow 140ms ease, scale 140ms ease;
+}
+
+.feelings-v3-family span {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.feelings-v3-family strong {
+  max-width: 100%;
+  font-size: .68rem;
+  line-height: 1.02;
+  overflow-wrap: anywhere;
+}
+
+.feelings-v3-family.is-preview,
+.feelings-v3-family.selected {
+  z-index: 6;
+  border-color: rgba(110, 142, 134, .72);
+  background: #fff;
+  box-shadow: 0 12px 28px rgba(56, 68, 66, .15), 0 0 0 4px rgba(110, 142, 134, .09);
+  scale: 1.08;
+}
+
+.feelings-v3-center {
+  position: absolute;
+  z-index: 7;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  width: 29%;
+  aspect-ratio: 1;
+  padding: .55rem;
+  place-items: center;
+  align-content: center;
+  border: 7px solid rgba(255, 253, 249, .88);
+  border-radius: 50%;
+  background: var(--deep-slate);
+  color: #fff;
+  box-shadow: 0 11px 32px rgba(56, 68, 66, .22);
+  text-align: center;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+.feelings-v3-center span {
+  font-size: clamp(1.15rem, 4vw, 1.55rem);
+}
+
+.feelings-v3-center strong {
+  margin-top: .12rem;
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(.78rem, 2.5vw, 1.02rem);
+  line-height: 1.04;
+}
+
+.feelings-v3-center small {
+  margin-top: .18rem;
+  color: rgba(255, 255, 255, .68);
+  font-size: clamp(.52rem, 1.7vw, .66rem);
+}
+
+.feelings-v3-hint {
+  margin: .3rem auto 1.25rem;
+  color: var(--muted);
+  font-size: .79rem;
+  line-height: 1.5;
+  text-align: center;
+}
+
+.feelings-v3-hint b {
+  color: var(--eucalyptus);
+}
+
+.feelings-v3-drilldown {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(1rem, 3vw, 1.45rem);
+  border: 1px solid #e7e0d9;
+  border-radius: 24px;
+  background: #fbfaf8;
+}
+
+.feelings-v3-prompt {
+  padding: .55rem;
+  text-align: center;
+}
+
+.feelings-v3-prompt strong {
+  color: var(--deep-slate);
+  font-size: 1.08rem;
+}
+
+.feelings-v3-prompt p {
+  margin: .25rem 0 0;
+  color: var(--muted);
+}
+
+.feelings-v3-lock-row {
+  display: flex;
+  gap: .8rem;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.feelings-v3-spin-again {
+  border: 0;
+  background: transparent;
+  color: var(--eucalyptus);
+  font: inherit;
+  font-weight: 800;
+}
+
+.feelings-v3-lock {
+  display: flex;
+  gap: .55rem;
+  align-items: center;
+  padding: .58rem .8rem;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #fff;
+}
+
+.feelings-v3-lock > span {
+  font-size: 1.35rem;
+}
+
+.feelings-v3-lock div {
+  display: grid;
+}
+
+.feelings-v3-lock small {
+  color: var(--muted);
+  font-size: .56rem;
+  font-weight: 900;
+  letter-spacing: .08em;
+}
+
+.feelings-v3-lock strong {
+  color: var(--deep-slate);
+  font-size: .9rem;
+}
+
+.feelings-v3-stage + .feelings-v3-stage {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e9e2db;
+}
+
+.feelings-v3-stage h3 {
+  margin: .15rem 0 .8rem;
+  color: var(--deep-slate);
+}
+
+.feelings-v3-precise-stage > p:not(.eyebrow) {
+  margin: -.35rem 0 .9rem;
+  color: var(--muted);
+  font-size: .86rem;
+  line-height: 1.55;
+}
+
+.feelings-v3-branches {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .65rem;
+}
+
+.feelings-v3-branch {
+  min-height: 96px;
+  padding: .85rem;
+  border: 1px solid #ded7d0;
+  border-radius: 18px;
+  background: #fff;
+  color: var(--deep-slate);
+  font: inherit;
+  text-align: left;
+}
+
+.feelings-v3-branch strong,
+.feelings-v3-branch small {
+  display: block;
+}
+
+.feelings-v3-branch strong {
+  margin-bottom: .3rem;
+  font-size: .98rem;
+}
+
+.feelings-v3-branch small {
+  color: var(--muted);
+  font-size: .76rem;
+  line-height: 1.4;
+}
+
+.feelings-v3-branch:hover,
+.feelings-v3-branch.selected {
+  border-color: var(--eucalyptus);
+  background: rgba(168, 183, 161, .18);
+}
+
+.feelings-v3-words {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .55rem;
+}
+
+.feelings-v3-word {
+  min-height: 50px;
+  padding: .65rem .55rem;
+  border: 1px solid #ded7d0;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--deep-slate);
+  font: inherit;
+  font-size: .84rem;
+  font-weight: 750;
+}
+
+.feelings-v3-word:hover,
+.feelings-v3-word.selected {
+  border-color: var(--eucalyptus);
+  background: var(--eucalyptus);
+  color: #fff;
+}
+
+.feelings-v3-checkin-card {
+  margin-top: 1.25rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid #e9e2db;
+}
+
+.feelings-v3-selection {
+  display: flex;
+  gap: .7rem;
+  align-items: center;
+  margin-bottom: .85rem;
+  padding: .85rem 1rem;
+  border-radius: 18px;
+  background: rgba(233, 236, 231, .7);
+}
+
+.feelings-v3-selection > span {
+  font-size: 1.7rem;
+}
+
+.feelings-v3-selection div {
+  display: grid;
+}
+
+.feelings-v3-selection small {
+  color: var(--muted);
+  font-size: .72rem;
+}
+
+.feelings-v3-selection strong {
+  color: var(--deep-slate);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.55rem;
+}
+
+.feelings-v3-insight {
+  padding: 1rem;
+  border-left: 5px solid var(--eucalyptus);
+  border-radius: 16px;
+  background: rgba(168, 183, 161, .18);
+}
+
+.feelings-v3-insight p {
+  margin: .35rem 0 .6rem;
+  color: var(--deep-slate);
+  line-height: 1.55;
+}
+
+.feelings-v3-insight span {
+  color: var(--muted);
+  font-size: .84rem;
+}
+
+.feelings-v3-intensity-head {
+  display: flex;
+  gap: 1rem;
+  align-items: end;
+  justify-content: space-between;
+  margin: 1.25rem 0 .5rem;
+}
+
+.feelings-v3-intensity-head label {
+  display: grid;
+}
+
+.feelings-v3-intensity-head label span {
+  margin-top: .2rem;
+  color: var(--muted);
+  font-size: .75rem;
+}
+
+.feelings-v3-intensity-head output {
+  color: var(--soft-plum);
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.feelings-v3-intensity {
+  width: 100%;
+  accent-color: var(--eucalyptus);
+}
+
+.feelings-v3-context-grid {
+  display: grid;
+  grid-template-columns: minmax(0, .7fr) minmax(0, 1.3fr);
+  gap: .8rem;
+  margin-top: 1.2rem;
+}
+
+.feelings-v3-context-grid label {
+  display: grid;
+  gap: .4rem;
+}
+
+.feelings-v3-context-grid label > span {
+  font-size: .8rem;
+  font-weight: 800;
+}
+
+.feelings-v3-context-grid label small {
+  color: var(--muted);
+  font-weight: 500;
+}
+
+.feelings-v3-context-grid select,
+.feelings-v3-context-grid textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid #ddd6cf;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--deep-slate);
+  font: inherit;
+}
+
+.feelings-v3-context-grid select {
+  min-height: 48px;
+  padding: .7rem;
+}
+
+.feelings-v3-context-grid textarea {
+  min-height: 92px;
+  padding: .75rem;
+  resize: vertical;
+}
+
+.feelings-v3-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  margin-top: 1rem;
+}
+
+.feelings-v3-save-status {
+  min-height: 1.3em;
+  margin: .6rem 0 0;
+  color: var(--eucalyptus);
+  font-size: .82rem;
+  font-weight: 800;
+}
+
+.feelings-v3-last-card,
+.feelings-v3-calendar-shell {
+  margin-top: 1rem;
+  padding: 1.2rem;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: rgba(255, 253, 249, .94);
+  box-shadow: var(--shadow-sm);
+}
+
+.feelings-v3-last-card {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.feelings-v3-last-card strong {
+  display: block;
+  color: var(--deep-slate);
+}
+
+.feelings-v3-last-card button {
+  min-height: 42px;
+  padding: .65rem .85rem;
+  border: 1px solid rgba(110, 142, 134, .25);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--eucalyptus);
+  font: inherit;
+  font-weight: 800;
+}
+
+.feelings-v3-calendar-head h2 {
+  margin: .2rem 0 .5rem;
+}
+
+.feelings-v3-calendar-head > p:last-child {
+  max-width: 760px;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
+.feelings-v3-month-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: .6rem;
+  margin: 1rem 0;
+}
+
+.feelings-v3-month-summary > div,
+.feelings-v3-month-summary > p {
+  display: grid;
+  min-height: 82px;
+  padding: .8rem;
+  place-content: center;
+  border-radius: 16px;
+  background: rgba(168, 183, 161, .16);
+  text-align: center;
+}
+
+.feelings-v3-month-summary strong {
+  color: var(--deep-slate);
+  font-size: 1.45rem;
+}
+
+.feelings-v3-month-summary span,
+.feelings-v3-month-summary p {
+  color: var(--muted);
+  font-size: .72rem;
+}
+
+.feelings-v3-calendar-nav {
+  display: grid;
+  grid-template-columns: 44px 1fr 44px;
+  gap: .6rem;
+  align-items: center;
+  margin: 1rem 0 .6rem;
+}
+
+.feelings-v3-calendar-nav strong {
+  text-align: center;
+}
+
+.feelings-v3-calendar-nav button {
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  background: #fff;
+  color: var(--deep-slate);
+  font-size: 1.5rem;
+}
+
+.feelings-v3-weekdays,
+.feelings-v3-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: .35rem;
+}
+
+.feelings-v3-weekdays {
+  margin-bottom: .35rem;
+}
+
+.feelings-v3-weekdays span {
+  color: var(--muted);
+  font-size: .64rem;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.feelings-v3-calendar-blank {
+  min-height: 72px;
+}
+
+.feelings-v3-day {
+  display: grid;
+  min-height: 72px;
+  padding: .45rem;
+  border: 1px solid #ece5df;
+  border-radius: 12px;
+  background: #fff;
+  color: var(--deep-slate);
+  font: inherit;
+  text-align: left;
+}
+
+.feelings-v3-day.has-checkin {
+  border-color: rgba(110, 142, 134, .32);
+  background: rgba(168, 183, 161, .10);
+}
+
+.feelings-v3-day > span {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  align-self: end;
+}
+
+.feelings-v3-day i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--eucalyptus);
+}
+
+.feelings-v3-day b {
+  color: var(--muted);
+  font-size: .58rem;
+}
+
+.feelings-v3-day-detail {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e9e2db;
+}
+
+.feelings-v3-day-detail article {
+  margin-top: .65rem;
+  padding: .8rem;
+  border-radius: 16px;
+  background: #fbfaf8;
+}
+
+.feelings-v3-day-detail article > div {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: .65rem;
+  align-items: center;
+}
+
+.feelings-v3-day-detail article > div > span {
+  font-size: 1.3rem;
+}
+
+.feelings-v3-day-detail article > div > div {
+  display: grid;
+}
+
+.feelings-v3-day-detail article small,
+.feelings-v3-day-detail article p {
+  color: var(--muted);
+  font-size: .72rem;
+}
+
+.feelings-v3-day-detail article strong {
+  color: var(--deep-slate);
+}
+
+.feelings-v3-day-detail blockquote {
+  margin: .6rem 0 0;
+  padding-left: .7rem;
+  border-left: 3px solid rgba(110, 142, 134, .35);
+  color: var(--deep-slate);
+  font-size: .84rem;
+}
+
+.state-angry { --state-dot: #d98f78; }
+.state-anxious { --state-dot: #d4a85e; }
+.state-overwhelmed { --state-dot: #ad91b4; }
+.state-scared { --state-dot: #7fa8be; }
+.state-sad { --state-dot: #849eb8; }
+.state-hurt { --state-dot: #c98f9c; }
+.state-lonely { --state-dot: #9d91b2; }
+.state-ashamed { --state-dot: #a77f99; }
+.state-numb { --state-dot: #aeb5b3; }
+.state-tired { --state-dot: #bcae9f; }
+.state-calm { --state-dot: #8fa88c; }
+.state-happy { --state-dot: #c8aa58; }
+
+.feelings-v3-day i[class*='state-'] {
+  background: var(--state-dot, var(--eucalyptus));
+}
+
+.feelings-v3-selection[class*='state-'],
+.feelings-v3-lock[class*='state-'] {
+  box-shadow: inset 4px 0 0 var(--state-dot, var(--eucalyptus));
+}
+
+.bottom-nav .feelings-v3-icon-fallback {
+  display: grid;
+  place-items: center;
+  color: currentColor;
+  font-size: 1.15rem !important;
+  font-weight: 900;
+}
+
+@media (min-width: 760px) {
+  .feelings-v3-hero {
+    grid-template-columns: 1fr auto;
+  }
+}
+
+@media (max-width: 650px) {
+  .feelings-v3-wheel {
+    width: min(100%, 430px);
+    margin-top: 1.4rem;
+  }
+
+  .feelings-v3-family {
+    width: 64px;
+    min-height: 46px;
+    padding: .26rem .2rem;
+    border-radius: 15px;
+  }
+
+  .feelings-v3-family span {
+    font-size: .88rem;
+  }
+
+  .feelings-v3-family strong {
+    font-size: .57rem;
+  }
+
+  .feelings-v3-center {
+    width: 31%;
+    border-width: 6px;
+  }
+
+  .feelings-v3-branches,
+  .feelings-v3-words,
+  .feelings-v3-context-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .feelings-v3-branch {
+    min-height: 82px;
+  }
+
+  .feelings-v3-words {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .feelings-v3-last-card {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .feelings-v3-month-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .feelings-v3-calendar-blank,
+  .feelings-v3-day {
+    min-height: 58px;
+  }
+}
+
+@media (max-width: 430px) {
+  .feelings-page {
+    padding-right: .7rem;
+    padding-left: .7rem;
+  }
+
+  .feelings-v3-shell {
+    padding-right: .65rem;
+    padding-left: .65rem;
+  }
+
+  .feelings-v3-family {
+    width: 57px;
+    min-height: 42px;
+  }
+
+  .feelings-v3-family strong {
+    font-size: .52rem;
+  }
+
+  .feelings-v3-family span {
+    font-size: .8rem;
+  }
+
+  .feelings-v3-center strong {
+    font-size: .72rem;
+  }
+
+  .feelings-v3-center small {
+    font-size: .48rem;
+  }
+
+  .feelings-v3-weekdays span {
+    font-size: .55rem;
+  }
+
+  .feelings-v3-day {
+    min-height: 52px;
+    padding: .32rem;
+    font-size: .78rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .feelings-v3-family {
+    transition: none !important;
+  }
+}
