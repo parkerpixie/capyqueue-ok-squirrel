@@ -27,6 +27,11 @@ body::before {
   font-size: 0;
 }
 
+/* Keep the four app destinations in one intentional row. */
+.bottom-nav {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
 .bottom-nav .nav-rescue:not(.active) {
   border-color: rgba(56, 68, 66, 0.12);
   background: rgba(255, 253, 249, 0.82);
@@ -52,10 +57,191 @@ body::before {
   opacity: 1;
 }
 
+/* DBT Lab already has a branded icon in the asset kit, so use it instead of the brain emoji. */
+.bottom-nav [data-dbt-tab] span {
+  width: 25px;
+  height: 25px;
+  margin: 0 auto 0.15rem;
+  background: url('/assets/ok-squirl/ok-squirl-icon-insights.svg') center / contain no-repeat;
+  font-size: 0;
+}
+
+.bottom-nav [data-dbt-tab].active span {
+  filter: brightness(0) invert(1);
+}
+
+/* Make the breathing cue visually unmistakable: Blondie stays readable while a full circle breathes behind her. */
+.breathing-stage {
+  min-height: 430px;
+  overflow: visible;
+}
+
+.breathing-orb-wrap {
+  width: 320px;
+  height: 320px;
+  margin-bottom: 0.35rem;
+}
+
+.blondie-breathe-button {
+  isolation: isolate;
+  width: 300px;
+  height: 300px;
+  overflow: visible;
+  background: transparent;
+}
+
+.blondie-breathe-button::before {
+  position: absolute;
+  z-index: 0;
+  width: 235px;
+  height: 235px;
+  border: 2px solid rgba(110, 142, 134, 0.28);
+  border-radius: 50%;
+  background: rgba(136, 169, 174, 0.22);
+  box-shadow:
+    0 0 0 14px rgba(168, 183, 161, 0.08),
+    0 18px 48px rgba(56, 68, 66, 0.12);
+  content: '';
+  transform: scale(0.72);
+  transition:
+    transform 1s ease-in-out,
+    background-color 500ms ease,
+    box-shadow 500ms ease;
+}
+
+.blondie-breathe-button::after {
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: url('/assets/ok-squirl/01-blondie-wave.png') center / 215px 215px no-repeat;
+  content: '';
+  opacity: 0;
+  transform: scale(0.94);
+  transition: opacity 300ms ease, transform 450ms ease;
+  pointer-events: none;
+}
+
+.blondie-breathe-button img {
+  position: relative;
+  z-index: 2;
+  width: 215px;
+  height: 215px;
+  transition: transform 700ms ease, opacity 250ms ease;
+}
+
+.breathing-number {
+  z-index: 4;
+  right: 14px;
+  bottom: 18px;
+}
+
+.breathing-stage.phase-inhale .blondie-breathe-button::before {
+  background: rgba(136, 169, 174, 0.3);
+  box-shadow:
+    0 0 0 22px rgba(168, 183, 161, 0.1),
+    0 24px 62px rgba(56, 68, 66, 0.16);
+  transform: scale(1.28);
+  transition-duration: 4s;
+}
+
+.breathing-stage.phase-hold .blondie-breathe-button::before {
+  background: rgba(136, 169, 174, 0.3);
+  transform: scale(1.28);
+  transition-duration: 400ms;
+}
+
+.breathing-stage.phase-exhale .blondie-breathe-button::before {
+  background: rgba(168, 183, 161, 0.18);
+  box-shadow:
+    0 0 0 10px rgba(168, 183, 161, 0.06),
+    0 14px 38px rgba(56, 68, 66, 0.1);
+  transform: scale(0.72);
+  transition-duration: 6s;
+}
+
+.breathing-stage.phase-inhale .blondie-breathe-button img,
+.breathing-stage.phase-hold .blondie-breathe-button img {
+  transform: translateY(-4px) scale(1.025);
+}
+
+.breathing-stage.phase-exhale .blondie-breathe-button img {
+  transform: translateY(2px) scale(0.985);
+}
+
+/* The completed state now visibly swaps Blondie from meditation to her wave pose. */
+.breathing-stage.is-complete .blondie-breathe-button::before {
+  background: rgba(168, 183, 161, 0.24);
+  box-shadow:
+    0 0 0 18px rgba(168, 183, 161, 0.09),
+    0 20px 52px rgba(56, 68, 66, 0.13);
+  transform: scale(0.94);
+}
+
+.breathing-stage.is-complete .blondie-breathe-button img {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.breathing-stage.is-complete .blondie-breathe-button::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
 @media (min-width: 900px) {
+  /* Desktop should feel like an app dock, not a widget parked in the lower-right corner. */
+  .bottom-nav {
+    right: auto;
+    left: 50%;
+    width: min(560px, calc(100vw - 2.5rem));
+    transform: translateX(-50%);
+  }
+
+  .bottom-nav .nav-rescue {
+    margin-top: 0;
+    border-width: 0;
+  }
+
   .bottom-nav button.active,
   .bottom-nav .nav-rescue.active {
     background: var(--eucalyptus);
     color: white;
+  }
+}
+
+@media (max-width: 520px) {
+  .breathing-stage {
+    min-height: 370px;
+  }
+
+  .breathing-orb-wrap {
+    width: 270px;
+    height: 270px;
+  }
+
+  .blondie-breathe-button {
+    width: 260px;
+    height: 260px;
+  }
+
+  .blondie-breathe-button::before {
+    width: 205px;
+    height: 205px;
+  }
+
+  .blondie-breathe-button img,
+  .blondie-breathe-button::after {
+    background-size: 188px 188px;
+  }
+
+  .blondie-breathe-button img {
+    width: 188px;
+    height: 188px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .blondie-breathe-button::before,
+  .blondie-breathe-button::after {
+    transition: none !important;
   }
 }
